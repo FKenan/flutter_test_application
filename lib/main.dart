@@ -9,7 +9,8 @@ void main(List<String> args) {
 //    => crossAxisAligment ile y ekseninde hizalayabiliriz.
 // Column => mainAxisAligment ile y, crossAxisAligment x üzerinde hizalama yaparız.
 //    => mainAxisSize min ile içeriği kapsatabiliriz. max ile genişleyebildiği kadar genişler. wrap, match_parent mantığı
-
+// Expanded => kapsadığı içeriği bulunduğu alanda diğer içerikler izin verdiği ölçüde genişletir yada daraltır.
+//    => flex özelliği default olarak 1 dir. flex, kotlindeki weighte denk gelir.
 class TestApp extends StatelessWidget {
   const TestApp({super.key});
 
@@ -21,9 +22,18 @@ class TestApp extends StatelessWidget {
         appBar: AppBar(backgroundColor: Colors.blue, title: Text("Test")),
         body: Row(
           children: [
-            Container(width: 150, height: 150, color: Colors.red),
-            Container(width: 150, height: 150, color: Colors.yellow),
-            Container(width: 150, height: 150, color: Colors.pink),
+            Expanded(
+              flex: 1,
+              child: Container(width: 150, height: 150, color: Colors.red),
+            ),
+            Expanded(
+              flex: 2,
+              child: Container(width: 150, height: 150, color: Colors.yellow),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(width: 150, height: 150, color: Colors.pink),
+            ),
           ],
         ),
         floatingActionButton: FloatingActionButton(
